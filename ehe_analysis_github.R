@@ -1,6 +1,6 @@
 #################
 # Ending the HIV epidemic jurisdiction analysis
-# Citation: Webster JL, Thorpe LE, Duncan DT, Gracely EJ, Goldstein ND. Alignment of ending the HIV epidemic priority jurisdictions with availability of HIV service organizations, 2019. Manuscript in preparation.
+# Citation: Webster JL, Thorpe LE, Duncan DT, Gracely EJ, Goldstein ND. Alignment of ending the HIV epidemic priority jurisdictions with availability of HIV service organizations. Manuscript in preparation.
 # 8/26/21 -- Neal Goldstein
 #################
 
