@@ -1,6 +1,6 @@
 #################
 # Ending the HIV epidemic jurisdiction analysis
-# Citation: Webster JL, Rafalko N, Thorpe LE, Duncan DT, Gracely EJ, Goldstein ND. Alignment of Ending the HIV Epidemic Priority jurisdictions with availability of HIV service organizations: An ecologic study. Manuscript in preparation.
+# Citation: Webster JL, Rafalko N, Thorpe LE, Duncan DT, Gracely EJ, Goldstein ND. Alignment of Ending the HIV Epidemic priority jurisdictions with availability of HIV service organizations: An ecological study. Manuscript in preparation.
 # 8/26/21 -- Neal Goldstein
 #################
 
@@ -112,23 +112,23 @@ for (i in 1:nrow(ehe_data)) {
   ehe_data$Area[i] = ifelse(ehe_data$Geography[i]=="County", county_carto$AREA[as.numeric(paste(as.character(county_carto$STATEFP),as.character(county_carto$COUNTYFP),sep=""))==ehe_data$FIPS[i]],
                             state_carto$AREA[as.numeric(as.character(state_carto$STATEFP))==ehe_data$FIPS[i]])
   
-  ehe_data$HIV_prevalence[i] = ifelse(ehe_data$Geography[i]=="County", as.numeric(sub(",", "", ehe_counties$Cases..95..CI.RSE.[ehe_counties$FIPS==ehe_data$FIPS[i] & ehe_counties$Indicator=="HIV prevalence" & ehe_counties$Year==2019])),
-                                      as.numeric(sub(",", "", ehe_states$Cases..95..CI.RSE.[ehe_states$FIPS==ehe_data$FIPS[i] & ehe_states$Indicator=="HIV prevalence" & ehe_states$Year==2019])))
+  ehe_data$HIV_prevalence[i] = ifelse(ehe_data$Geography[i]=="County", as.numeric(sub(",", "", ehe_counties$Cases[ehe_counties$FIPS==ehe_data$FIPS[i] & ehe_counties$Indicator=="HIV prevalence" & ehe_counties$Year==2021])),
+                                      as.numeric(sub(",", "", ehe_states$Cases[ehe_states$FIPS==ehe_data$FIPS[i] & ehe_states$Indicator=="HIV prevalence" & ehe_states$Year==2021])))
   
-  ehe_data$HIV_diagnoses[i] = ifelse(ehe_data$Geography[i]=="County", as.numeric(sub(",", "", ehe_counties$Cases..95..CI.RSE.[ehe_counties$FIPS==ehe_data$FIPS[i] & ehe_counties$Indicator=="HIV diagnoses" & ehe_counties$Year==2019])),
-                                     as.numeric(sub(",", "", ehe_states$Cases..95..CI.RSE.[ehe_states$FIPS==ehe_data$FIPS[i] & ehe_states$Indicator=="HIV diagnoses" & ehe_states$Year==2019])))
+  ehe_data$HIV_diagnoses[i] = ifelse(ehe_data$Geography[i]=="County", as.numeric(sub(",", "", ehe_counties$Cases[ehe_counties$FIPS==ehe_data$FIPS[i] & ehe_counties$Indicator=="HIV diagnoses" & ehe_counties$Year==2021])),
+                                     as.numeric(sub(",", "", ehe_states$Cases[ehe_states$FIPS==ehe_data$FIPS[i] & ehe_states$Indicator=="HIV diagnoses" & ehe_states$Year==2021])))
   
-  ehe_data$HIV_suppressed_percent[i] = ifelse(ehe_data$Geography[i]=="County", as.numeric(ehe_counties$Percent..95..CI.RSE.[ehe_counties$FIPS==ehe_data$FIPS[i] & ehe_counties$Indicator=="HIV viral suppression" & ehe_counties$Year==2019]),
-                                              as.numeric(ehe_states$Percent..95..CI.RSE.[ehe_states$FIPS==ehe_data$FIPS[i] & ehe_states$Indicator=="HIV viral suppression" & ehe_states$Year==2019]))
+  ehe_data$HIV_suppressed_percent[i] = ifelse(ehe_data$Geography[i]=="County", as.numeric(ehe_counties$Percent..95..CI.RSE.[ehe_counties$FIPS==ehe_data$FIPS[i] & ehe_counties$Indicator=="HIV viral suppression" & ehe_counties$Year==2021]),
+                                              as.numeric(ehe_states$Percent..95..CI.RSE.[ehe_states$FIPS==ehe_data$FIPS[i] & ehe_states$Indicator=="HIV viral suppression" & ehe_states$Year==2021]))
   
-  ehe_data$HIV_prep_percent[i] = ifelse(ehe_data$Geography[i]=="County", as.numeric(ehe_counties$Percent..95..CI.RSE.[ehe_counties$FIPS==ehe_data$FIPS[i] & ehe_counties$Indicator=="PrEP coverage and number of persons prescribed" & ehe_counties$Year==2019]),
-                                        as.numeric(ehe_states$Percent..95..CI.RSE.[ehe_states$FIPS==ehe_data$FIPS[i] & ehe_states$Indicator=="PrEP coverage and number of persons prescribed" & ehe_states$Year==2019]))
+  ehe_data$HIV_prep_percent[i] = ifelse(ehe_data$Geography[i]=="County", as.numeric(ehe_counties$Percent..95..CI.RSE.[ehe_counties$FIPS==ehe_data$FIPS[i] & ehe_counties$Indicator=="PrEP coverage and number of persons prescribed" & ehe_counties$Year==2021]),
+                                        as.numeric(ehe_states$Percent..95..CI.RSE.[ehe_states$FIPS==ehe_data$FIPS[i] & ehe_states$Indicator=="PrEP coverage and number of persons prescribed" & ehe_states$Year==2021]))
   
-  ehe_data$HIV_linked_percent[i] = ifelse(ehe_data$Geography[i]=="County", as.numeric(ehe_counties$Percent..95..CI.RSE.[ehe_counties$FIPS==ehe_data$FIPS[i] & ehe_counties$Indicator=="Linkage to HIV care" & ehe_counties$Year==2019]),
-                                          as.numeric(ehe_states$Percent..95..CI.RSE.[ehe_states$FIPS==ehe_data$FIPS[i] & ehe_states$Indicator=="Linkage to HIV care" & ehe_states$Year==2019]))
+  ehe_data$HIV_linked_percent[i] = ifelse(ehe_data$Geography[i]=="County", as.numeric(ehe_counties$Percent..95..CI.RSE.[ehe_counties$FIPS==ehe_data$FIPS[i] & ehe_counties$Indicator=="Linkage to HIV care" & ehe_counties$Year==2021]),
+                                          as.numeric(ehe_states$Percent..95..CI.RSE.[ehe_states$FIPS==ehe_data$FIPS[i] & ehe_states$Indicator=="Linkage to HIV care" & ehe_states$Year==2021]))
   
-  ehe_data$HIV_status_percent[i] = ifelse(ehe_data$Geography[i]=="County", as.numeric(strsplit(ehe_counties$Percent..95..CI.RSE.[ehe_counties$FIPS==ehe_data$FIPS[i] & ehe_counties$Indicator=="Knowledge of Status" & ehe_counties$Year==2019], " (", fixed=T)[[1]][1]),
-                                          as.numeric(strsplit(ehe_states$Percent..95..CI.RSE.[ehe_states$FIPS==ehe_data$FIPS[i] & ehe_states$Indicator=="Knowledge of Status" & ehe_states$Year==2019], " (", fixed=T)[[1]][1]))
+  ehe_data$HIV_status_percent[i] = ifelse(ehe_data$Geography[i]=="County", as.numeric(strsplit(ehe_counties$Percent..95..CI.RSE.[ehe_counties$FIPS==ehe_data$FIPS[i] & ehe_counties$Indicator=="Knowledge of Status" & ehe_counties$Year==2021], " (", fixed=T)[[1]][1]),
+                                          as.numeric(strsplit(ehe_states$Percent..95..CI.RSE.[ehe_states$FIPS==ehe_data$FIPS[i] & ehe_states$Indicator=="Knowledge of Status" & ehe_states$Year==2021], " (", fixed=T)[[1]][1]))
   
   ehe_data$Org_HIV_prevention[i] = ifelse(ehe_data$Geography[i]=="County", length(grep(sub(" County| Parish| Borough| City| Municipio", "", ehe_data$Name[i]), paste(trimws(sub("County|Parish|Borough|City|Municipio", "", orgs_hiv_prevention$field_org_county)), orgs_hiv_prevention$field_org_state, sep=", "), ignore.case=T)), 
                                           nrow(orgs_hiv_prevention[orgs_hiv_prevention$field_org_state==state.abb[match(ehe_data$Name[i],state.name)], ]))
@@ -282,6 +282,9 @@ ehe_data$Org_HIV_any = (ehe_data$Org_HIV_any/ehe_data$Population*100000)
 ehe_data$HIV_prevalence = (ehe_data$HIV_prevalence/ehe_data$Population*1000)
 ehe_data$HIV_diagnoses = (ehe_data$HIV_diagnoses/ehe_data$Population*1000)
 
+#export data
+#write.csv(ehe_data, file="ehe_data.csv", na="", row.names=F)
+
 #plot preferences for geography
 plot_sym = c(1,1,2)
 plot_siz = c(1,1.5,1)
@@ -298,6 +301,9 @@ par(xpd=F)
 
 #draw regression line and standard error of estimate; see: https://www.sciencedirect.com/topics/mathematics/standard-error-of-estimate
 model = lm(Org_HIV_any ~ HIV_status_percent + as.factor(Geography_cat), data=ehe_data)
+#weighted regression to deal with concerns over heteroscedasticity: https://www.statology.org/weighted-least-squares-in-r/
+wt = 1 / lm(abs(model$residuals) ~ model$fitted.values)$fitted.values^2 
+model = lm(Org_HIV_any ~ HIV_status_percent + as.factor(Geography_cat), data=ehe_data, weights=wt)
 summary(model)
 confint(model)
 abline(a=coef(model)[1], b=coef(model)[2])
@@ -316,7 +322,7 @@ lower2Se = approxfun(x=c(par('usr')[1],par('usr')[2]), y=c((par('usr')[1]*coef(m
 upper2Se = approxfun(x=c(par('usr')[2],par('usr')[1]), y=c((par('usr')[2]*coef(model)[2]+(coef(model)[1]+(2*Se))),(par('usr')[1]*coef(model)[2]+(coef(model)[1]+(2*Se)))))
 ehe_data$Name[which(lower2Se(ehe_data$HIV_status_percent) > ehe_data$Org_HIV_any)]
 ehe_data$Name[which(upper2Se(ehe_data$HIV_status_percent) < ehe_data$Org_HIV_any)]
-rm(lower2Se,upper2Se)
+rm(lower2Se,upper2Se,wt)
 
 #PREP
 pdf("Figure 1B.pdf", paper="letter")
@@ -330,6 +336,9 @@ par(xpd=F)
 
 #draw regression line and standard error of estimate; see: https://www.sciencedirect.com/topics/mathematics/standard-error-of-estimate
 model = lm(Org_HIV_any ~ HIV_prep_percent + as.factor(Geography_cat), data=ehe_data)
+#weighted regression to deal with concerns over heteroscedasticity: https://www.statology.org/weighted-least-squares-in-r/
+wt = 1 / lm(abs(model$residuals) ~ model$fitted.values)$fitted.values^2 
+model = lm(Org_HIV_any ~ HIV_prep_percent + as.factor(Geography_cat), data=ehe_data, weights=wt)
 summary(model)
 confint(model)
 abline(a=coef(model)[1], b=coef(model)[2])
@@ -348,7 +357,7 @@ lower2Se = approxfun(x=c(par('usr')[1],par('usr')[2]), y=c((par('usr')[1]*coef(m
 upper2Se = approxfun(x=c(par('usr')[2],par('usr')[1]), y=c((par('usr')[2]*coef(model)[2]+(coef(model)[1]+(2*Se))),(par('usr')[1]*coef(model)[2]+(coef(model)[1]+(2*Se)))))
 ehe_data$Name[which(lower2Se(ehe_data$HIV_prep_percent) > ehe_data$Org_HIV_any)]
 ehe_data$Name[which(upper2Se(ehe_data$HIV_prep_percent) < ehe_data$Org_HIV_any)]
-rm(lower2Se,upper2Se)
+rm(lower2Se,upper2Se,wt)
 
 #PREVALENCE
 pdf("Figure 1C.pdf", paper="letter")
@@ -362,6 +371,9 @@ par(xpd=F)
 
 #draw regression line and standard error of estimate; see: https://www.sciencedirect.com/topics/mathematics/standard-error-of-estimate
 model = lm(Org_HIV_any ~ HIV_prevalence + as.factor(Geography_cat), data=ehe_data)
+#weighted regression to deal with concerns over heteroscedasticity: https://www.statology.org/weighted-least-squares-in-r/
+wt = 1 / lm(abs(model$residuals) ~ model$fitted.values)$fitted.values^2 
+model = lm(Org_HIV_any ~ HIV_prevalence + as.factor(Geography_cat), data=ehe_data, weights=wt)
 summary(model)
 confint(model)
 abline(a=coef(model)[1], b=coef(model)[2])
@@ -380,7 +392,7 @@ lower2Se = approxfun(x=c(par('usr')[1],par('usr')[2]), y=c((par('usr')[1]*coef(m
 upper2Se = approxfun(x=c(par('usr')[2],par('usr')[1]), y=c((par('usr')[2]*coef(model)[2]+(coef(model)[1]+(2*Se))),(par('usr')[1]*coef(model)[2]+(coef(model)[1]+(2*Se)))))
 ehe_data$Name[which(lower2Se(ehe_data$HIV_prevalence) > ehe_data$Org_HIV_any)]
 ehe_data$Name[which(upper2Se(ehe_data$HIV_prevalence) < ehe_data$Org_HIV_any)]
-rm(lower2Se,upper2Se)
+rm(lower2Se,upper2Se,wt)
 
 #DIAGNOSES
 pdf("Figure 1D.pdf", paper="letter")
@@ -394,6 +406,9 @@ par(xpd=F)
 
 #draw regression line and standard error of estimate; see: https://www.sciencedirect.com/topics/mathematics/standard-error-of-estimate
 model = lm(Org_HIV_any ~ HIV_diagnoses + as.factor(Geography_cat), data=ehe_data)
+#weighted regression to deal with concerns over heteroscedasticity: https://www.statology.org/weighted-least-squares-in-r/
+wt = 1 / lm(abs(model$residuals) ~ model$fitted.values)$fitted.values^2 
+model = lm(Org_HIV_any ~ HIV_diagnoses + as.factor(Geography_cat), data=ehe_data, weights=wt)
 summary(model)
 confint(model)
 abline(a=coef(model)[1], b=coef(model)[2])
@@ -412,7 +427,7 @@ lower2Se = approxfun(x=c(par('usr')[1],par('usr')[2]), y=c((par('usr')[1]*coef(m
 upper2Se = approxfun(x=c(par('usr')[2],par('usr')[1]), y=c((par('usr')[2]*coef(model)[2]+(coef(model)[1]+(2*Se))),(par('usr')[1]*coef(model)[2]+(coef(model)[1]+(2*Se)))))
 ehe_data$Name[which(lower2Se(ehe_data$HIV_diagnoses) > ehe_data$Org_HIV_any)]
 ehe_data$Name[which(upper2Se(ehe_data$HIV_diagnoses) < ehe_data$Org_HIV_any)]
-rm(lower2Se,upper2Se)
+rm(lower2Se,upper2Se,wt)
 
 #LINKED
 pdf("Figure 1E.pdf", paper="letter")
@@ -426,6 +441,9 @@ par(xpd=F)
 
 #draw regression line and standard error of estimate; see: https://www.sciencedirect.com/topics/mathematics/standard-error-of-estimate
 model = lm(Org_HIV_any ~ HIV_linked_percent + as.factor(Geography_cat), data=ehe_data)
+#weighted regression to deal with concerns over heteroscedasticity: https://www.statology.org/weighted-least-squares-in-r/
+wt = 1 / lm(abs(model$residuals) ~ model$fitted.values)$fitted.values^2 
+model = lm(Org_HIV_any ~ HIV_linked_percent + as.factor(Geography_cat), data=ehe_data, weights=wt)
 summary(model)
 confint(model)
 abline(a=coef(model)[1], b=coef(model)[2])
@@ -444,7 +462,7 @@ lower2Se = approxfun(x=c(par('usr')[1],par('usr')[2]), y=c((par('usr')[1]*coef(m
 upper2Se = approxfun(x=c(par('usr')[2],par('usr')[1]), y=c((par('usr')[2]*coef(model)[2]+(coef(model)[1]+(2*Se))),(par('usr')[1]*coef(model)[2]+(coef(model)[1]+(2*Se)))))
 ehe_data$Name[which(lower2Se(ehe_data$HIV_linked_percent) > ehe_data$Org_HIV_any)]
 ehe_data$Name[which(upper2Se(ehe_data$HIV_linked_percent) < ehe_data$Org_HIV_any)]
-rm(lower2Se,upper2Se)
+rm(lower2Se,upper2Se,wt)
 
 #SUPPRESSED
 pdf("Figure 1F.pdf", paper="letter")
@@ -458,6 +476,9 @@ par(xpd=F)
 
 #draw regression line and standard error of estimate; see: https://www.sciencedirect.com/topics/mathematics/standard-error-of-estimate
 model = lm(Org_HIV_any ~ HIV_suppressed_percent + as.factor(Geography_cat), data=ehe_data)
+#weighted regression to deal with concerns over heteroscedasticity: https://www.statology.org/weighted-least-squares-in-r/
+wt = 1 / lm(abs(model$residuals) ~ model$fitted.values)$fitted.values^2 
+model = lm(Org_HIV_any ~ HIV_suppressed_percent + as.factor(Geography_cat), data=ehe_data, weights=wt)
 summary(model)
 confint(model)
 abline(a=coef(model)[1], b=coef(model)[2])
@@ -476,5 +497,4 @@ lower2Se = approxfun(x=c(par('usr')[1],par('usr')[2]), y=c((par('usr')[1]*coef(m
 upper2Se = approxfun(x=c(par('usr')[2],par('usr')[1]), y=c((par('usr')[2]*coef(model)[2]+(coef(model)[1]+(2*Se))),(par('usr')[1]*coef(model)[2]+(coef(model)[1]+(2*Se)))))
 ehe_data$Name[which(lower2Se(ehe_data$HIV_suppressed_percent) > ehe_data$Org_HIV_any)]
 ehe_data$Name[which(upper2Se(ehe_data$HIV_suppressed_percent) < ehe_data$Org_HIV_any)]
-rm(lower2Se,upper2Se)
-
+rm(lower2Se,upper2Se,wt)
